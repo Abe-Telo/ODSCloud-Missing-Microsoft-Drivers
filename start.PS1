@@ -1,3 +1,6 @@
+Use this script with a one liner
+#Invoke-Expression (Invoke-WebRequest -Uri  https://github.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/blob/main/start.PS1 -UseBasicParsing).Content
+
 # Get the system SKU and model
 $sku = (Get-WmiObject -Class Win32_ComputerSystem).SystemSKU
 $model = (Get-WmiObject -Class Win32_ComputerSystem).Model
