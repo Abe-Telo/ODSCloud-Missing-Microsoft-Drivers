@@ -13,11 +13,13 @@ $Surface_3_NAG = "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Mi
 if ($sku -eq "Surface_3_Nag") {
     # If SKU Matches Surface_3_Nag
     # Run the remote script to download and install the driver
+    Write-Host SKU Found: $sku
     Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_NAG -UseBasicParsing).Content
     
 } elseif ($model -eq "Surface 3") {
     # If Model Matches Surface 3
     # Run the remote script to download and install the driver
+    Write-Host Model Found: $model
     Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_NAG -UseBasicParsing).Content
 
 } else {
