@@ -15,6 +15,8 @@ PCI Encryption/Decryption Controller **       PCI\VEN_8086&DEV_2298&SUBSYS_72708
 
 **Surface Touch Servicing ML **                 ACPI\VEN_MSHW&DEV_0102&SUBSYS_MSHWTSAM&REV_100CD14\4&E940C90&0
 
+----                                        --------
+
 I see i am missing ** Surface Touch Servicing ML  ** 
 
 I then use the  **PNPUTIL /add-driver <filename.inf | *.inf> [/subdirs] [/install] [/reboot]** command to norrow down where my issue is. 
