@@ -1,7 +1,6 @@
 #Use this script with a one-liner
 #Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/start.PS1" -UseBasicParsing).Content
 
-
 # Get the system SKU and model
 $sku = (Get-ComputerInfo).CssystemSkuNumber
 $model = (Get-WmiObject -Class Win32_ComputerSystem).Model
@@ -24,7 +23,7 @@ if ($sku -eq "Surface_3_Nag") {
     Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_WIFI -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface 3") {
-    # If SKU not found, try Model that Matches Surface 3, 
+    # If the SKU is not recognized, check if the computer model matches "Surface 3"
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_NAG -UseBasicParsing).Content
 
