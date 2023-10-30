@@ -2,7 +2,7 @@
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 $zipUrl = "https://github.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/archive/refs/heads/main.zip"
-$basePath = "E:\OSDCloud\DriverPack\"
+$basePath = "E:\OSDCloud\DriverPacks\"
 $zipPath = Join-Path $basePath "ODSCloud-Missing-Microsoft-Drivers-main.zip"
 
 # Ensure directory exists
