@@ -25,7 +25,7 @@ https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/pnputil-comma
 
 Once i see where the issue is, I document it here hoping we can fix it in later release of OSDDeploy
 
-
+----                                        --------
 To start using this script.
 in WinPE, be connected to the internet. 
 Open a powershell 
