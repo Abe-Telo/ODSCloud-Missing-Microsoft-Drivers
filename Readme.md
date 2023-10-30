@@ -44,13 +44,19 @@ Currently, it seems as if i have these 3 issues with different types of models i
 I will update this list of drivers missing in Surface WinPE/RE
 
 Surface Pro 1, WIfi ✔️ | Touch ✔️| Keybord ❔ (bulky)
+
 Surface Pro 2, WIfi ✔️ | Touch ✔️| Keybord ❔ (bulky)
+
 Surface Pro 3, WIfi ✔️ | Touch ✔️| Keybord ❔
+
 Surface pro 4, Wifi ❌ | Touch ❔ | KeyBoard ✔️
+
 Surface pro 5, Wifi ❌ | Touch ❌| KeyBoard ✔️(5th Gen)
+
 Surface pro 7, Wifi ✔️ | Touch ❌| KeyBoard ✔️
 
 Surface 3 WIFI, WIfi ❌ | Touch ❌| Keybord ❔
+
 Surface 3 NAG, WIfi ✔️ | Touch ❌| Keybord ✔️ (LTE North Ameirca)
 
 Surface Laptop 4, Wifi ✔️ | Touch ❌ | KeyBoard ✔️
