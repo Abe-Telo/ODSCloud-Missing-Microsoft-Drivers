@@ -57,6 +57,6 @@ Surface pro 7, Wifi ✔️ | Touch ❌| KeyBoard ✔️
 
 Surface 3 WIFI, WIfi ❌ | Touch ❌| Keybord ❔
 
-Surface 3 NAG, LTE ✔️ | Touch ❌| Keybord ✔️ (LTE North Ameirca)
+Surface 3 NAG, WIfi ✔️ | Touch ❌| Keybord ✔️ (LTE North Ameirca)
 
 Surface Laptop 4, Wifi ✔️ | Touch ❌ | KeyBoard ✔️
