@@ -24,18 +24,18 @@ if ($sku -eq "Surface_3_Nag") {
     Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_WIFI -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface 3") {
-    # If SKU not found, try Model that Matches Surface 3
-    # Run the remote script to download and install the driver
+    # If SKU not found, try Model that Matches Surface 3, 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_NAG -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Pro 4") {
-    # If Model Matches Surface 4
-    # Run the remote script to download and install the driver
+    # If Model Matches Surface 4 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Invoke-Expression (Invoke-WebRequest -Uri $Surface_Pro4 -UseBasicParsing).Content
 
 } else {
     # Neither SKU nor Model matches the expected values
-    Write-Host "Model not recognized. No updated drivers available for this model. Exiting script." -ForegroundColor Red
+    Write-Host "Model not recognized. No updated drivers are available for this model. Exiting script." -ForegroundColor Red
+    Write-Host "To run this script again type: " -ForegroundColor Yellow
+    Write-Host Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/start.PS1" -UseBasicParsing).Content" -ForegroundColor Yellow 
 }
