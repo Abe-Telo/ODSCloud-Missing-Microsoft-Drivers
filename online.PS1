@@ -1,5 +1,5 @@
 #Use this script with a one-liner
-#Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/start.PS1" -UseBasicParsing).Content
+#Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.PS1" -UseBasicParsing).Content
 
 # Get the system SKU and model
 $sku = (Get-ComputerInfo).CssystemSkuNumber
