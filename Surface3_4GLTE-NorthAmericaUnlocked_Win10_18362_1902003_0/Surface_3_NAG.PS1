@@ -1,37 +1,33 @@
-# Load the necessary assembly for zip operations
+# Load necessary assembly for zip operations and set paths
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
-# Set the download URL and path to save the ZIP file
 $zipUrl = "https://github.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/archive/refs/heads/main.zip"
 $basePath = "E:\OSDCloud\DriverPack\"
-$zipFileName = "ODSCloud-Missing-Microsoft-Drivers-main.zip"
-$zipPath = Join-Path $basePath $zipFileName
+$zipPath = Join-Path $basePath "ODSCloud-Missing-Microsoft-Drivers-main.zip"
 
-# Create the directory if it doesn't exist
+# Ensure directory exists
 if (-not (Test-Path $basePath)) {
     New-Item -Path $basePath -ItemType Directory
 }
 
-# Download the ZIP file
+# Download and extract ZIP
 Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath
-
-# Extract ZIP archive using Expand-Archive
 Expand-Archive -Path $zipPath -DestinationPath $basePath -Force
 
-# Define the path for Surface drivers
-$Surface_3_NAG = "ODSCloud-Missing-Microsoft-Drivers-main\Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0\SurfaceUpdate\Drivers"
-$addDriver = Join-Path $basePath $Surface_3_NAG
-write-host "Constructed path: $addDriver"
+# Construct driver paths
+$driversBase = Join-Path $basePath "ODSCloud-Missing-Microsoft-Drivers-main\Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0\SurfaceUpdate\Drivers"
+$touchScreenDriverPath = Join-Path $driversBase "Display\SurfaceTouchScreenDriver\*"
+$spiDriverPath = Join-Path $driversBase "System\SPI\*"
 
-$touchScreenDriverPath = Join-Path $addDriver "Display\SurfaceTouchScreenDriver\*"
-write-host "Touch Screen Driver Path: $touchScreenDriverPath"
+# Display constructed paths
+write-host "Paths:"
+write-host "Drivers Base: $driversBase"
+write-host "Touch Screen: $touchScreenDriverPath"
+write-host "SPI: $spiDriverPath"
 
-$spiDriverPath = Join-Path $addDriver "System\SPI\*"
-write-host "SPI Driver Path: $spiDriverPath"
-
-# Run the pnputil.exe commands
+# Install drivers
 pnputil.exe /add-driver $touchScreenDriverPath /subdirs /install
 pnputil.exe /add-driver $spiDriverPath /subdirs /install
 
-# Optional: Cleanup - Delete the ZIP file after extraction and installation
+# Cleanup ZIP file
 Remove-Item -Path $zipPath -Force
