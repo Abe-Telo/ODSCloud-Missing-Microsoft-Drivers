@@ -5,7 +5,7 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 $zipUrl = "https://github.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/archive/refs/heads/main.zip"
 $basePath = "E:\OSDCloud\DriverPack\"
 $zipPath = Join-Path $basePath "ODSCloud-Missing-Microsoft-Drivers-main.zip" 
-$extractPath = Join-Path $basePath "ODSCloud-Missing-Microsoft-Drivers-main\"
+$extractPath = Join-Path $basePath "ODSCloud-Missing-Microsoft-Drivers-main"
 
 # Create the directory if it doesn't exist
 if (-not (Test-Path $basePath)) {
@@ -19,7 +19,7 @@ Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath
 Expand-Archive -Path $zipPath -DestinationPath $extractPath -Force
 
 # Run the pnputil.exe commands
-$addDriver = Join-Path $extractPath "Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0\SurfaceUpdate\Drivers"
+$addDriver = "E:\OSDCloud\DriverPack\ODSCloud-Missing-Microsoft-Drivers-main\Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0\SurfaceUpdate\Drivers"
 
 $touchScreenDriverPath = Join-Path $addDriver "Display\SurfaceTouchScreenDriver\*"
 $spiDriverPath = Join-Path $addDriver "System\SPI\*"
