@@ -1,6 +1,6 @@
 #This Script is the base line of everything. 
-#Copy this script into online.ps1, And add it to your startnet.cmd file
-# .\online.PS1
+#Copy this script into offline.ps1, And add it to your startnet.cmd file
+# .\offline.PS1
 
 # Test if online
 $online = Test-Connection -ComputerName 8.8.8.8 -Count 1 -Quiet
