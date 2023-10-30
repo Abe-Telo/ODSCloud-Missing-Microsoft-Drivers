@@ -3,7 +3,7 @@
 
 
 # Get the system SKU and model
-$sku = (Get-WmiObject -Class Win32_ComputerSystem).SystemSKU
+$sku = (Get-ComputerInfo).CssystemSkuNumber
 $model = (Get-WmiObject -Class Win32_ComputerSystem).Model
 
 # Define the script URL
