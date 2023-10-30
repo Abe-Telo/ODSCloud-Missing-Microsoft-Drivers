@@ -15,30 +15,8 @@ if (-not (Test-Path $zipDir)) {
 # Download the ZIP file
 Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath
 
-# Open ZIP archive
-$archive = [System.IO.Compression.ZipFile]::OpenRead($zipPath)
-
-foreach ($entry in $archive.Entries) {
-    $destinationPath = Join-Path $extractPath $entry.FullName
-    $shouldExtract = $true
-
-    if (Test-Path $destinationPath) {
-        $existingFile = Get-Item $destinationPath
-        if ($existingFile.LastWriteTimeUtc -eq $entry.LastWriteTime) {
-            $shouldExtract = $false
-        }
-    }
-
-    if ($shouldExtract) {
-        $entryDestinationDirectory = [System.IO.Path]::GetDirectoryName($destinationPath)
-        if (-not (Test-Path $entryDestinationDirectory)) {
-            New-Item -Path $entryDestinationDirectory -ItemType Directory
-        }
-        $entry.ExtractToFile($destinationPath, $true) # The $true flag means it will overwrite if the file already exists
-    }
-}
-
-$archive.Dispose()
+# Extract ZIP archive using Expand-Archive
+Expand-Archive -Path $zipPath -DestinationPath $extractPath -Force
 
 # Run the pnputil.exe commands
 $basePath = "E:\OSDCloud\Drivers\ODSCloud-Missing-Microsoft-Drivers-main\Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0\SurfaceUpdate\Drivers"
