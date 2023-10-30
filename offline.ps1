@@ -4,7 +4,7 @@ $online = Test-Connection -ComputerName 8.8.8.8 -Count 1 -Quiet
 if ($online) {
     # If online, fetch and run the script from the URL
     try {
-        Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/start.PS1" -UseBasicParsing).Content
+        Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.PS1" -UseBasicParsing).Content
     } catch {
         Write-Error "Failed to fetch or execute the online script."
     }
