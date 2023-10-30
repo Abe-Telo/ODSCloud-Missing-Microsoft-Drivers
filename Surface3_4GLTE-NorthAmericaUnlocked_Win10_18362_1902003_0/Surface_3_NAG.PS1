@@ -12,6 +12,12 @@ if (-not (Test-Path $zipDir)) {
 # Download the ZIP file
 Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath
 
+# Check if the extraction directory exists and delete it
+$extractionDir = Join-Path $extractPath "ODSCloud-Missing-Microsoft-Drivers-main"
+if (Test-Path $extractionDir) {
+    Remove-Item $extractionDir -Recurse -Force
+}
+
 # Extract the ZIP file
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 [System.IO.Compression.ZipFile]::ExtractToDirectory($zipPath, $extractPath)
