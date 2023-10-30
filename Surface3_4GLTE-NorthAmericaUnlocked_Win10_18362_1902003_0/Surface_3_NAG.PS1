@@ -19,13 +19,14 @@ Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath
 Expand-Archive -Path $zipPath -DestinationPath $extractPath -Force
 
 # Run the pnputil.exe commands
+write-host "TESTING SOMTHING COOL"
 $addDriver = Join-Path $extractPath "Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0\SurfaceUpdate\Drivers"
+write-host "$addDriver"
 
 $touchScreenDriverPath = Join-Path $addDriver "Display\SurfaceTouchScreenDriver\*"
-$spiDriverPath = Join-Path $addDriver "System\SPI\*"
-
-write-host "$addDriver"
 write-host "$touchScreenDriverPath"
+
+$spiDriverPath = Join-Path $addDriver "System\SPI\*"
 write-host "$spiDriverPath"
 
 pnputil.exe /add-driver $touchScreenDriverPath /subdirs /install
