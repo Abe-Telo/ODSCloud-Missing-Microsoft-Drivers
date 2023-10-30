@@ -1,4 +1,4 @@
-#Use this script with a one liner
+#Use this script with a one-liner
 #Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/start.PS1" -UseBasicParsing).Content
 
 
@@ -8,6 +8,8 @@ $model = (Get-WmiObject -Class Win32_ComputerSystem).Model
 
 # Define the script URL
 $Surface_3_NAG = "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0/Surface_3_NAG.PS1"
+$Surface_3_WIFI = "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0/Surface_3_NAG.PS1"
+$Surface_Pro4 = "https://NotYetImplemented.com/"
 
 # Check SKU
 if ($sku -eq "Surface_3_Nag") {
@@ -16,11 +18,22 @@ if ($sku -eq "Surface_3_Nag") {
     Write-Host "SKU Found: $sku" -ForegroundColor Yellow
     Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_NAG -UseBasicParsing).Content
     
+} elseif ($sku -eq "Surface_3_WIFI") {
+    # If sku Matches Surface_3_WIFI
+    Write-Host "sku Found: $sku" -ForegroundColor Yellow
+    Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_WIFI -UseBasicParsing).Content
+
 } elseif ($model -eq "Surface 3") {
-    # If Model Matches Surface 3
+    # If SKU not found, try Model that Matches Surface 3
     # Run the remote script to download and install the driver
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_NAG -UseBasicParsing).Content
+
+} elseif ($model -eq "Surface Pro 4") {
+    # If Model Matches Surface 4
+    # Run the remote script to download and install the driver
+    Write-Host "Model Found: $model" -ForegroundColor Yellow
+    Invoke-Expression (Invoke-WebRequest -Uri $Surface_4Pro -UseBasicParsing).Content
 
 } else {
     # Neither SKU nor Model matches the expected values
