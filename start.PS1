@@ -33,7 +33,7 @@ if ($sku -eq "Surface_3_Nag") {
     # If Model Matches Surface 4
     # Run the remote script to download and install the driver
     Write-Host "Model Found: $model" -ForegroundColor Yellow
-    Invoke-Expression (Invoke-WebRequest -Uri $Surface_4Pro -UseBasicParsing).Content
+    Invoke-Expression (Invoke-WebRequest -Uri $Surface_Pro4 -UseBasicParsing).Content
 
 } else {
     # Neither SKU nor Model matches the expected values
