@@ -16,7 +16,7 @@ if (-not (Test-Path $basePath)) {
 Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath
 
 # Extract ZIP archive using Expand-Archive
-Expand-Archive -Path $zipPath -DestinationPath $extractPath -Force
+Expand-Archive -Path $zipPath -DestinationPath $basePath -Force
 
 # Run the pnputil.exe commands
 write-host "TESTING SOMTHING COOL"
