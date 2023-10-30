@@ -47,7 +47,7 @@ Surface Pro 1, WIfi ✔️ | Touch ✔️| Keybord ❔ (bulky)
 
 Surface Pro 2, WIfi ✔️ | Touch ✔️| Keybord ❔ (bulky)
 
-Surface Pro 3, WIfi ✔️ | Touch ✔️| Keybord ❔
+Surface Pro 3, WIfi ✔️ | Touch ✔️| Keybord ✔️
 
 Surface pro 4, Wifi ❌ | Touch ❔ | KeyBoard ✔️
 
@@ -57,6 +57,6 @@ Surface pro 7, Wifi ✔️ | Touch ❌| KeyBoard ✔️
 
 Surface 3 WIFI, WIfi ❌ | Touch ❌| Keybord ❔
 
-Surface 3 NAG, WIfi ✔️ | Touch ❌| Keybord ✔️ (LTE North Ameirca)
+Surface 3 NAG, LTE ✔️ | Touch ❌| Keybord ✔️ (LTE North Ameirca)
 
 Surface Laptop 4, Wifi ✔️ | Touch ❌ | KeyBoard ✔️
