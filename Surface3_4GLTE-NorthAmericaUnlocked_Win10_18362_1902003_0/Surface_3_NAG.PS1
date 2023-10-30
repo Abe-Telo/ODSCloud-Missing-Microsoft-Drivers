@@ -32,3 +32,6 @@ write-host "SPI Driver Path: $spiDriverPath"
 # Run the pnputil.exe commands
 pnputil.exe /add-driver $touchScreenDriverPath /subdirs /install
 pnputil.exe /add-driver $spiDriverPath /subdirs /install
+
+# Optional: Cleanup - Delete the ZIP file after extraction and installation
+Remove-Item -Path $zipPath -Force
