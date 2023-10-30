@@ -3,7 +3,7 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 # Set the download URL and path to save the ZIP file
 $zipUrl = "https://github.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/archive/refs/heads/main.zip"
-$basePath = "E:\OSDCloud\DriverPack\"
+$basePath = "E:\OSDCloud\DriverPacks\"
 $zipPath = Join-Path $basePath "WinPE-Missing-Microsoft-Drivers.zip" 
 $extractPath = Join-Path $basePath "WinPE-Missing-Microsoft-Drivers"
 
