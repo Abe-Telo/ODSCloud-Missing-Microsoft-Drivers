@@ -1,4 +1,7 @@
-# Set download URL and path to save the ZIP file
+# Load the necessary assembly for zip operations
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+
+# Set the download URL and path to save the ZIP file
 $zipUrl = "https://github.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/archive/refs/heads/main.zip"
 $zipDir = "E:\OSDCloud\Drivers\"
 $zipPath = Join-Path $zipDir "ODSCloud-Missing-Microsoft-Drivers-main.zip"
