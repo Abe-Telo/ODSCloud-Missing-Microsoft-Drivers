@@ -2,7 +2,7 @@
 $zipUrl = "https://github.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/archive/refs/heads/main.zip"
 $zipDir = "E:\OSDCloud\Drivers\"
 $zipPath = Join-Path $zipDir "ODSCloud-Missing-Microsoft-Drivers-main.zip"
-$extractPath = "E:\OSDCloud\Drivers\"
+$extractPath = "E:\OSDCloud\Drivers\ODSCloud-Missing-Microsoft-Drivers-main"
 
 # Create the directory if it doesn't exist
 if (-not (Test-Path $zipDir)) {
@@ -12,15 +12,30 @@ if (-not (Test-Path $zipDir)) {
 # Download the ZIP file
 Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath
 
-# Check if the extraction directory exists and delete it
-$extractionDir = Join-Path $extractPath "ODSCloud-Missing-Microsoft-Drivers-main"
-if (Test-Path $extractionDir) {
-    Remove-Item $extractionDir -Recurse -Force
+# Open ZIP archive
+$archive = [System.IO.Compression.ZipFile]::OpenRead($zipPath)
+
+foreach ($entry in $archive.Entries) {
+    $destinationPath = Join-Path $extractPath $entry.FullName
+    $shouldExtract = $true
+
+    if (Test-Path $destinationPath) {
+        $existingFile = Get-Item $destinationPath
+        if ($existingFile.LastWriteTimeUtc -eq $entry.LastWriteTime) {
+            $shouldExtract = $false
+        }
+    }
+
+    if ($shouldExtract) {
+        $entryDestinationDirectory = [System.IO.Path]::GetDirectoryName($destinationPath)
+        if (-not (Test-Path $entryDestinationDirectory)) {
+            New-Item -Path $entryDestinationDirectory -ItemType Directory
+        }
+        $entry.ExtractToFile($destinationPath, $true) # The $true flag means it will overwrite if the file already exists
+    }
 }
 
-# Extract the ZIP file
-Add-Type -AssemblyName System.IO.Compression.FileSystem
-[System.IO.Compression.ZipFile]::ExtractToDirectory($zipPath, $extractPath)
+$archive.Dispose()
 
 # Run the pnputil.exe commands
 $basePath = "E:\OSDCloud\Drivers\ODSCloud-Missing-Microsoft-Drivers-main\Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0\SurfaceUpdate\Drivers"
