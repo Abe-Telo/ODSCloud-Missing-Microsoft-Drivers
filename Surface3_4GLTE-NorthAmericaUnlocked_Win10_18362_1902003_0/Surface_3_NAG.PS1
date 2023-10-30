@@ -3,13 +3,13 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 # Set the download URL and path to save the ZIP file
 $zipUrl = "https://github.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/archive/refs/heads/main.zip"
-$zipDir = "E:\OSDCloud\Drivers\"
-$zipPath = Join-Path $zipDir "ODSCloud-Missing-Microsoft-Drivers-main.zip"
-$extractPath = "E:\OSDCloud\Drivers\ODSCloud-Missing-Microsoft-Drivers-main"
+$basePath = "E:\OSDCloud\DriverPack\"
+$zipPath = Join-Path $basePath "ODSCloud-Missing-Microsoft-Drivers-main.zip" 
+$extractPath = Join-Path $basePath "WinPE-Missing-Microsoft-Drivers\"
 
 # Create the directory if it doesn't exist
-if (-not (Test-Path $zipDir)) {
-    New-Item -Path $zipDir -ItemType Directory
+if (-not (Test-Path $basePath)) {
+    New-Item -Path $basePath -ItemType Directory
 }
 
 # Download the ZIP file
@@ -19,10 +19,10 @@ Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath
 Expand-Archive -Path $zipPath -DestinationPath $extractPath -Force
 
 # Run the pnputil.exe commands
-$basePath = "E:\OSDCloud\Drivers\ODSCloud-Missing-Microsoft-Drivers-main\Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0\SurfaceUpdate\Drivers"
+$addDriver = Join-Path $extractPath "Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0\SurfaceUpdate\Drivers"
 
-$touchScreenDriverPath = Join-Path $basePath "Display\SurfaceTouchScreenDriver\*"
-$spiDriverPath = Join-Path $basePath "System\SPI\*"
+$touchScreenDriverPath = Join-Path $addDriver "Display\SurfaceTouchScreenDriver\*"
+$spiDriverPath = Join-Path $addDriver "System\SPI\*"
 
 pnputil.exe /add-driver $touchScreenDriverPath /subdirs /install
 pnputil.exe /add-driver $spiDriverPath /subdirs /install
