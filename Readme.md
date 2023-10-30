@@ -34,3 +34,23 @@ Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe
 It is recommended to copy past the oflline.ps1 file and run it localy in your startnet.cmd file.
 
 What the offline.ps1 does, It checks if your online, Then updates this rasptory offline, If your ever offline it will just use the offline Drivers instead. 
+
+----                                        --------
+Currently knows issues as of 10/29/2023
+
+I vote for this as well, My issues i would like to resolve are touch screen, Keyboard, WIFI Drivers in WinRE, WinPE.
+Currently, it seems as if i have these 3 issues with different types of models in surfaces. I keep needing to plug in my USB Keyboard and mouse for most of the surfaces.
+
+I will update this list of drivers missing in Surface WinPE/RE
+
+Surface Pro 1, WIfi ✔️ | Touch ✔️| Keybord ❔ (bulky)
+Surface Pro 2, WIfi ✔️ | Touch ✔️| Keybord ❔ (bulky)
+Surface Pro 3, WIfi ✔️ | Touch ✔️| Keybord ❔
+Surface pro 4, Wifi ❌ | Touch ❔ | KeyBoard ✔️
+Surface pro 5, Wifi ❌ | Touch ❌| KeyBoard ✔️(5th Gen)
+Surface pro 7, Wifi ✔️ | Touch ❌| KeyBoard ✔️
+
+Surface 3 WIFI, WIfi ❌ | Touch ❌| Keybord ❔
+Surface 3 NAG, WIfi ✔️ | Touch ❌| Keybord ✔️ (LTE North Ameirca)
+
+Surface Laptop 4, Wifi ✔️ | Touch ❌ | KeyBoard ✔️
