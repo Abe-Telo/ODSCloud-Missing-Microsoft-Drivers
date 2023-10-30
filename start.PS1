@@ -37,5 +37,5 @@ if ($sku -eq "Surface_3_Nag") {
     # Neither SKU nor Model matches the expected values
     Write-Host "Model not recognized. No updated drivers are available for this model. Exiting script." -ForegroundColor Red
     Write-Host "To run this script again type: " -ForegroundColor Yellow
-    Write-Host Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/start.PS1" -UseBasicParsing).Content" -ForegroundColor Yellow 
+    Write-Host 'Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/start.PS1" -UseBasicParsing).Content" -ForegroundColor Yellow' 
 }
