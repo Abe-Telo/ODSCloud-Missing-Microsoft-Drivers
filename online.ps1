@@ -8,11 +8,18 @@ $model = (Get-WmiObject -Class Win32_ComputerSystem).Model
 # Define the script URL
 $Surface_3_NAG = "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0/Surface_3_NAG.PS1"
 $Surface_3_WIFI = "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0/Surface_3_NAG.PS1"
+Surface_3_US2 = ""
 $Surface_Pro4 = "https://NotYetImplemented.com/"
 
 # Check SKU
 if ($sku -eq "Surface_3_Nag") {
     # If SKU Matches Surface_3_Nag
+    # Run the remote script to download and install the driver
+    Write-Host "SKU Found: $sku" -ForegroundColor Yellow
+    Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_NAG -UseBasicParsing).Content
+
+if ($sku -eq "Surface_3_US2") {
+    # If SKU Matches Surface_3_US
     # Run the remote script to download and install the driver
     Write-Host "SKU Found: $sku" -ForegroundColor Yellow
     Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_NAG -UseBasicParsing).Content
