@@ -1,3 +1,7 @@
+#This Script is the base line of everything. 
+#Copy this script into online.ps1, And add it to your startnet.cmd file
+# .\online.PS1
+
 # Test if online
 $online = Test-Connection -ComputerName 8.8.8.8 -Count 1 -Quiet
 
@@ -10,8 +14,8 @@ if ($online) {
     }
 } else {
     # If offline, run the local script
-    if (Test-Path .\start.PS1) {
-        .\start.PS1
+    if (Test-Path .\online.PS1) {
+        .\online.PS1
     } else {
         Write-Error "The local script start.PS1 does not exist in the current directory."
     }
