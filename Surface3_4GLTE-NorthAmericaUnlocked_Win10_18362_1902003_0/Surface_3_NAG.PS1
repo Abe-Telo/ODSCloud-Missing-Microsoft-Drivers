@@ -19,7 +19,8 @@ Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath
 Expand-Archive -Path $zipPath -DestinationPath $extractPath -Force
 
 # Run the pnputil.exe commands
-$addDriver = Join-Path $extractPath "Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0\SurfaceUpdate\Drivers"
+$addDriver = Join-Path $extractPath "Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0\SurfaceUpdate\Drivers\"
+
 
 $touchScreenDriverPath = Join-Path $addDriver "Display\SurfaceTouchScreenDriver\*"
 $spiDriverPath = Join-Path $addDriver "System\SPI\*"
