@@ -24,3 +24,13 @@ I then use the  **PNPUTIL /add-driver <filename.inf | *.inf> [/subdirs] [/instal
 https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/pnputil-command-syntax
 
 Once i see where the issue is, I document it here hoping we can fix it in later release of OSDDeploy
+
+
+To start using this script.
+in WinPE, be connected to the internet. 
+Open a powershell 
+Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.ps1" -UseBasicParsing).Content
+
+It is recommended to copy past the oflline.ps1 file and run it localy in your startnet.cmd file.
+
+What the offline.ps1 does, It checks if your online, Then updates this rasptory offline, If your ever offline it will just use the offline Drivers instead. 
