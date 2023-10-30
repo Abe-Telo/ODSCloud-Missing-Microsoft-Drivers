@@ -24,9 +24,9 @@ $addDriver = Join-Path $extractPath "Surface3_4GLTE-NorthAmericaUnlocked_Win10_1
 $touchScreenDriverPath = Join-Path $addDriver "Display\SurfaceTouchScreenDriver\*"
 $spiDriverPath = Join-Path $addDriver "System\SPI\*"
 
-write-host $addDriver
-write-host $touchScreenDriverPath
-write-host $spiDriverPath
+write-host "$addDriver"
+write-host "$touchScreenDriverPath"
+write-host "$spiDriverPath"
 
 pnputil.exe /add-driver $touchScreenDriverPath /subdirs /install
 pnputil.exe /add-driver $spiDriverPath /subdirs /install
