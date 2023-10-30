@@ -1,5 +1,5 @@
-#Use this script with a one-liner
-#Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.PS1" -UseBasicParsing).Content
+# Use this script with a one-liner
+# Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.PS1" -UseBasicParsing).Content
 
 # Get the system SKU and model
 $sku = (Get-ComputerInfo).CssystemSkuNumber
@@ -7,8 +7,8 @@ $model = (Get-WmiObject -Class Win32_ComputerSystem).Model
 
 # Define the script URL
 $Surface_3_NAG = "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0/Surface_3_NAG.PS1"
-$Surface_3_WIFI = "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0/Surface_3_NAG.PS1"
-Surface_3_US2 = ""
+$Surface_3_WIFI = "https://NotYetImplemented.com/"
+$Surface_3_US2 = "https://NotYetImplemented.com/"
 $Surface_Pro4 = "https://NotYetImplemented.com/"
 
 # Check SKU
@@ -18,12 +18,12 @@ if ($sku -eq "Surface_3_Nag") {
     Write-Host "SKU Found: $sku" -ForegroundColor Yellow
     Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_NAG -UseBasicParsing).Content
 
-if ($sku -eq "Surface_3_US2") {
+} elseif ($sku -eq "Surface_3_US2") {
     # If SKU Matches Surface_3_US
     # Run the remote script to download and install the driver
     Write-Host "SKU Found: $sku" -ForegroundColor Yellow
     Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_NAG -UseBasicParsing).Content
-    
+
 } elseif ($sku -eq "Surface_3_WIFI") {
     # If sku Matches Surface_3_WIFI
     Write-Host "sku Found: $sku" -ForegroundColor Yellow
@@ -43,5 +43,5 @@ if ($sku -eq "Surface_3_US2") {
     # Neither SKU nor Model matches the expected values
     Write-Host "Model not recognized. No updated drivers are available for this model. Exiting script." -ForegroundColor Red
     Write-Host "To run this script again type: " -ForegroundColor Yellow
-    Write-Host 'Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/start.PS1" -UseBasicParsing).Content" -ForegroundColor Yellow' 
+    Write-Host 'Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/start.PS1" -UseBasicParsing).Content"' -ForegroundColor Yellow 
 }
