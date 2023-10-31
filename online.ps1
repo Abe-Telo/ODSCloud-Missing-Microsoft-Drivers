@@ -5,7 +5,7 @@
 $sku = (Get-ComputerInfo).CssystemSkuNumber
 $model = (Get-WmiObject -Class Win32_ComputerSystem).Model
 
-# Define the script URL
+# It Looks Like All Surface_3 Models Use the same touch drivers, However, I am still implementing it here If I find a discovery. 
 $Surface_3_NAG = "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0/Surface_3_NAG.PS1"
 $Surface_3_WIFI = "https://NotYetImplemented.com/"
 $Surface_3_US2 = "https://NotYetImplemented.com/"
@@ -27,7 +27,7 @@ if ($sku -eq "Surface_3_Nag") {
 } elseif ($sku -eq "Surface_3_WIFI") {
     # If sku Matches Surface_3_WIFI
     Write-Host "sku Found: $sku" -ForegroundColor Yellow
-    Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_WIFI -UseBasicParsing).Content
+    Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_NAG -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface 3") {
     # If the SKU is not recognized, check if the computer model matches "Surface 3"
