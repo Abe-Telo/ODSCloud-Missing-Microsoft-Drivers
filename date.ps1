@@ -1,3 +1,5 @@
+#This script is for testing only at the moment.
+
 function Test-InternetConnection {
     try {
         $ping = Test-Connection -ComputerName '8.8.8.8' -Count 1 -ErrorAction Stop
