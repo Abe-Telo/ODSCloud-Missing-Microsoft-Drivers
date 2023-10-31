@@ -14,13 +14,40 @@ if errorlevel 1 (
 echo Starting KeyBoard Min Mode
 start /min osk
 
-:: The Concept. 
-powershell -command "$filePathE = 'E:\OSDCloud\DriverPack\ODSCloud-Missing-Microsoft-Drivers-main\offline.ps1'; $filePathD = 'D:\OSDCloud\DriverPack\ODSCloud-Missing-Microsoft-Drivers-main\offline.ps1'; if (Test-Path $filePathE) { Start-Process -NoNewWindow -FilePath 'powershell' -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File', $filePathE } elseif (Test-Path $filePathD) { Start-Process -NoNewWindow -FilePath 'powershell' -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File', $filePathD } else { Write-Host 'Script not found in either location.'; powershell Invoke-Expression (Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.ps1' -UseBasicParsing).Content }"
-Echo TEMP: For this test, I see it failing, lets try making it work directly. 
-start powershell  -command Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.ps1" -UseBasicParsing).Content
-Echo I am leaving a Echo, for those who want to copy past. 
-echo Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.ps1" -UseBasicParsing).Content
+:: I found that if the time is not correct, then we get an SSL Error when invoking. To avoid this during Setup, I added this to update time.
+:: However, we will not rely on the time but rather the date, And you might need to update the time by yourself.
+echo Updating the Date and time: America/New_York
+Powershell -Command "$response = Invoke-WebRequest -Uri 'http://worldtimeapi.org/api/timezone/America/New_York' -UseBasicParsing; $currentDateTime = ($response.Content | ConvertFrom-Json).utc_datetime; $date = Get-Date $currentDateTime -Format 'MM-dd-yyyy'; $time = Get-Date $currentDateTime -Format 'HH:mm:ss'; cmd /c date $date; cmd /c time $time"
+date /t  & time /t
+ 
 
+:: The Concept: This script looks for the file name offline.ps1 locally in drive, E,D,C. If it does not find it, It will download it for the next offline run.
+:: If you ever need an update, All you need to do is be connected to the internet. 
+:: Offline.ps1 should have its own command for its updates, If you are online, Otherwise it uses the local known drivers. 
+
+SETLOCAL
+
+REM Define paths
+SET scriptPathE=E:\OSDCloud\DriverPacks\ODSCloud-Missing-Microsoft-Drivers-main\offline.ps1
+SET scriptPathD=D:\OSDCloud\DriverPacks\ODSCloud-Missing-Microsoft-Drivers-main\offline.ps1
+SET scriptPathC=C:\OSDCloud\DriverPacks\ODSCloud-Missing-Microsoft-Drivers-main\offline.ps1
+SET onlineScriptURL=https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.ps1
+
+REM Check for the existence of offline.ps1 in predefined paths and execute if found
+FOR %%P IN (%scriptPathE% %scriptPathD% %scriptPathC%) DO (
+    IF EXIST %%P (
+        ECHO Found offline.ps1 on: %%~dP
+        START powershell -NoProfile -ExecutionPolicy Bypass -File "%%P"
+        EXIT /B
+    )
+) 
+
+REM If offline.ps1 is not found in any location, try downloading and executing online.ps1
+ECHO Script offline.ps1 not found in any location. Downloading...
+powershell -command "Invoke-Expression (Invoke-WebRequest -Uri '%onlineScriptURL%' -UseBasicParsing).Content"
+ECHO Finished executing the online script.
+
+ENDLOCAL
    
 :: OSDCloud related commands
 powershell -NoL -C Initialize-OSDCloudStartnet
