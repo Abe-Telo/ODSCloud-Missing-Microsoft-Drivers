@@ -14,8 +14,8 @@ if ($online) {
     }
 } else {
     # If offline, run the local script
-    if (Test-Path .\online.PS1) {
-        .\online.PS1
+    if (Test-Path .\online.ps1) {
+        .\online.ps1
     } else {
         Write-Error "The local script start.PS1 does not exist in the current directory."
     }
