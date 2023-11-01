@@ -15,17 +15,9 @@ if (Is-Online) {
         Write-Output "Fetching and executing extract_zip.ps1 from online source..."
         Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/extract_zip.ps1" -UseBasicParsing).Content
         
-    #Just for testing.
-    if (Test-Path $localScriptPath) {
-        Write-Output "Executing local script: $localScriptPath"
-        & $localScriptPath
-    } else {
-        Write-Error "The local script online.ps1 does not exist at path $localScriptPath."
-    }
-
-        ##Possiably replaced this in the future. 
-        #Write-Output "Fetching and executing online.ps1 from online source..."
-        #Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.ps1" -UseBasicParsing).Content
+        #Possiably replaced this in the future. 
+        Write-Output "Fetching and executing online.ps1 from online source..."
+        Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.ps1" -UseBasicParsing).Content
     } catch {
         Write-Error "Failed to fetch or execute the online script."
     }
