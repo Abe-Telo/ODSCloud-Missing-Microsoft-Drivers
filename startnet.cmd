@@ -16,10 +16,22 @@ start /min osk
 
 :: I found that if the time is not correct, then we get an SSL Error when invoking. To avoid this during Setup, I added this to update time.
 :: However, we will not rely on the time but rather the date, And you might need to update the time by yourself.
-echo Updating the Date and time: America/New_York
-Powershell -Command "$response = Invoke-WebRequest -Uri 'http://worldtimeapi.org/api/timezone/America/New_York' -UseBasicParsing; $currentDateTime = ($response.Content | ConvertFrom-Json).utc_datetime; $date = Get-Date $currentDateTime -Format 'MM-dd-yyyy'; $time = Get-Date $currentDateTime -Format 'HH:mm:ss'; cmd /c date $date; cmd /c time $time"
-date /t  & time /t
+::echo Updating the Date and time: America/New_York
+::Powershell -Command "$response = Invoke-WebRequest -Uri 'http://worldtimeapi.org/api/timezone/America/New_York' -UseBasicParsing; $currentDateTime = ($response.Content | ConvertFrom-Json).utc_datetime; $date = Get-Date $currentDateTime -Format 'MM-dd-yyyy'; $time = Get-Date $currentDateTime -Format 'HH:mm:ss'; cmd /c date $date; cmd /c time $time"
+::date /t  & time /t
  
+echo Updating the Date and time: America/New_York
+
+for %%X in (C D E) do (
+    if exist %%X:\OSDCloud\DriverPacks\ODSCloud-Missing-Microsoft-Drivers-main\date.ps1 (
+        powershell -ExecutionPolicy Bypass -NoProfile -File "%%X:\OSDCloud\DriverPacks\ODSCloud-Missing-Microsoft-Drivers-main\date.ps1"
+        echo Done: Date Updated.
+        goto enddate
+    )
+)
+:enddate
+
+
 
 :: Check for internet connection by pinging a known reliable IP
 ping -n 1 8.8.8.8 > NUL 2>&1
