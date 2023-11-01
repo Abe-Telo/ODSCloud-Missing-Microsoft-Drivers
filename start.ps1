@@ -2,7 +2,17 @@
 # Copy this script into offline.ps1, And add it to your startnet.cmd file
 # .\offline.ps1
 
-$basePath = "E:\OSDCloud\DriverPacks\ODSCloud-Missing-Microsoft-Drivers-main" 
+# Determine the USB partition of type IFS
+$usbDrive = Get-USBPartition | Where-Object { $_.Type -eq "IFS" } | Select-Object -ExpandProperty DriveLetter
+
+# If there's no IFS type drive found, terminate the script
+if (-not $usbDrive) {
+    Write-Error "No USB partition with IFS type found. Exiting."
+    return
+}
+
+# Base path adjusted to reflect the USB drive
+$basePath = "${usbDrive}:\OSDCloud\DriverPacks\ODSCloud-Missing-Microsoft-Drivers-main" 
 
 function Is-Online {
     # Returns $true if online, $false otherwise
@@ -15,7 +25,7 @@ if (Is-Online) {
         Write-Output "Fetching and executing extract_zip.ps1 from online source..."
         Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/extract_zip.ps1" -UseBasicParsing).Content
         
-        #Possiably replaced this in the future. 
+        # Possibly replace this in the future
         Write-Output "Fetching and executing online.ps1 from online source..."
         Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.ps1" -UseBasicParsing).Content
     } catch {
