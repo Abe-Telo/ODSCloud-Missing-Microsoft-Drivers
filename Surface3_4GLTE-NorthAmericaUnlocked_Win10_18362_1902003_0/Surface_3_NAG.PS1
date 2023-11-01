@@ -1,8 +1,17 @@
+# Fetch the USB drive with IFS type
+$usbDrive = Get-USBPartition | Where-Object { $_.Type -eq "IFS" } | Select-Object -ExpandProperty DriveLetter
+
+# If no IFS type drive found, terminate the script
+if (-not $usbDrive) {
+    Write-Error "No USB partition with IFS type found. Exiting."
+    return
+}
+
 # Load necessary assembly for zip operations and set paths
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 $zipUrl = "https://github.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/archive/refs/heads/main.zip"
-$basePath = "E:\OSDCloud\DriverPacks\"
+$basePath = "${usbDrive}:\OSDCloud\DriverPacks\"
 $zipPath = Join-Path $basePath "ODSCloud-Missing-Microsoft-Drivers-main.zip"
 
 # Ensure directory exists
