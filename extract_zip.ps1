@@ -1,25 +1,17 @@
-# Function to get USB partitions
-function Get-USBPartition {
-    Get-WmiObject Win32_DiskDrive | 
-        Where-Object { $_.MediaType -eq "Removable Media" } | 
-        ForEach-Object {
-            $_ | Get-WmiObject -Query "ASSOCIATORS OF {Win32_DiskDrive.DeviceID='$($_.DeviceID)'} WHERE AssocClass=Win32_DiskDriveToDiskPartition" | 
-                ForEach-Object {
-                    $_ | Get-WmiObject -Query "ASSOCIATORS OF {Win32_DiskPartition.DeviceID='$($_.DeviceID)'} WHERE AssocClass=Win32_LogicalDiskToPartition"
-                }
-        }
-}
+# Fetch the USB drive with IFS type
+$usbDrive = Get-USBPartition | Where-Object { $_.Type -eq "IFS" } | Select-Object -ExpandProperty DriveLetter
 
-# Get USB drives
-$usbDrives = Get-USBPartition | Select-Object -ExpandProperty DeviceID
+# If no IFS type drive found, terminate the script
+if (-not $usbDrive) {
+    Write-Error "No USB partition with IFS type found. Exiting."
+    return
+}
 
 # Load necessary assembly for zip operations and set paths
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 $zipUrl = "https://github.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/archive/refs/heads/main.zip"
-
-# Assuming you want to use the first detected USB drive letter for your basePath
-$basePath = "$($usbDrives[1]):\OSDCloud\DriverPacks\"
+$basePath = "${usbDrive}:\OSDCloud\DriverPacks\"
 $zipPath = Join-Path $basePath "ODSCloud-Missing-Microsoft-Drivers-main.zip"
 
 # Ensure directory exists
