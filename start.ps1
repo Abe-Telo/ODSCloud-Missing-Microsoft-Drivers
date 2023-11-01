@@ -23,12 +23,12 @@ if (Is-Online) {
     }
 } else {
     # If offline, run the local script
-    $localScriptPath = Join-Path $basePath "online.ps1"
+    $localScriptPath = Join-Path $basePath "offline.ps1"
 
     if (Test-Path $localScriptPath) {
         Write-Output "Executing local script: $localScriptPath"
         & $localScriptPath
     } else {
-        Write-Error "The local script online.ps1 does not exist at path $localScriptPath."
+        Write-Error "The local script offline.ps1 does not exist at path $localScriptPath."
     }
 }
