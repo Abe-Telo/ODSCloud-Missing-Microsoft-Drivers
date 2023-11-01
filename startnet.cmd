@@ -32,6 +32,20 @@ for %%X in (C D E) do (
 :enddate
 
 
+:: To be tested.  
+::echo Updating the Date and time: America/New_York
+:: Call PowerShell script to get the IFS type USB drive
+::for /f %%i in ('powershell -ExecutionPolicy Bypass -NoProfile -File "GetUSBDrive.ps1"') do set usbDrive=%%i
+
+:: Check if the required file exists in the detected USB drive
+::if exist %usbDrive%:\OSDCloud\DriverPacks\ODSCloud-Missing-Microsoft-Drivers-main\date.ps1 (
+::    powershell -ExecutionPolicy Bypass -NoProfile -File "%usbDrive%:\OSDCloud\DriverPacks\ODSCloud-Missing-Microsoft-Drivers-main\date.ps1"
+::    echo Done: Date Updated.
+::) else (
+::    echo Error: File not found on USB drive.
+::)
+
+
 
 :: Check for internet connection by pinging a known reliable IP
 ping -n 1 8.8.8.8 > NUL 2>&1
