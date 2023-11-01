@@ -34,7 +34,7 @@ if ($sku -eq "Surface_3_Nag") {
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_NAG -UseBasicParsing).Content
 
-} elseif ($model -eq "Surface_Pro_3") {
+} elseif ($model -eq "Surface Pro 3") {
     # If the SKU is not recognized, check if the computer model matches "Surface 3"
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Invoke-Expression (Invoke-WebRequest -Uri $Surface_3_NAG -UseBasicParsing).Content
