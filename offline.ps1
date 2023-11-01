@@ -12,12 +12,21 @@
 # Use this script locally with a one-liner
 # & "E:\OSDCloud\DriverPacks\ODSCloud-Missing-Microsoft-Drivers-main\online.ps1"
 
+# Determine the USB partition of type IFS
+$usbDrive = Get-USBPartition | Where-Object { $_.Type -eq "IFS" } | Select-Object -ExpandProperty DriveLetter
+
+# If there's no IFS type drive found, terminate the script
+if (-not $usbDrive) {
+    Write-Error "No USB partition with IFS type found. Exiting."
+    return
+}
+
 # Get the system SKU and model
 $sku = (Get-ComputerInfo).CssystemSkuNumber
 $model = (Get-WmiObject -Class Win32_ComputerSystem).Model
 
-# Local paths for each script
-$basePath = "E:\OSDCloud\DriverPacks\ODSCloud-Missing-Microsoft-Drivers-main"
+# Local paths for each script adjusted for the USB drive
+$basePath = "${usbDrive}:\OSDCloud\DriverPacks\ODSCloud-Missing-Microsoft-Drivers-main"
 $Surface_3_NAG = "$basePath\Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0\Surface_3_NAG.PS1"
 $Surface_3_WIFI = "$basePath\Surface_3_WIFI.PS1"
 $Surface_3_US2 = "$basePath\Surface_3_US2.PS1"
