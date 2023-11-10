@@ -7,7 +7,7 @@ net start wlansvc
 powershell set-wifi -SSID MY_WIFI_SSID -PSK MY_WIFI_PASSWORD
 
 :: I have 2 locations. So if the Surface is at location 1, It will connect to the 1st, If it fails, connect to the 2nd WIFI Location.
-ping 8.8.8.8 -n 3
+ping 8.8.8.8 -n 5
 if errorlevel 1 ( 
     powershell set-wifi -SSID MY_WIFI2_SSID -PSK MY_WIFI2_PASSWORD
 ) 
