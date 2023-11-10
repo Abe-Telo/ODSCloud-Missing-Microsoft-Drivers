@@ -110,11 +110,11 @@ if ($sku -eq "Surface_3_Nag") {
 
 
 
-#} elseif ($model -eq "Surface Pro") { 
-#    Write-Host "Model Found: $model" -ForegroundColor Yellow
-#    Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-#    #Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro -UseBasicParsing).Content
-#
+} elseif ($sku -eq "Surface_Pro") { 
+    Write-Host "SKU Found: $model" -ForegroundColor Yellow
+    Write-Host "This SKU is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro -UseBasicParsing).Content
+
 
 } elseif ($model -eq "Surface Pro 2") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
@@ -135,7 +135,11 @@ if ($sku -eq "Surface_3_Nag") {
     Write-Host "SKU Found: $sku We used SKU to avoid conflict with 2 models having same name." -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
     #Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro5thGen -UseBasicParsing).Content
-    exit
+
+} elseif ($sku -eq "Surface_Pro_1807") { 
+    Write-Host "SKU Found: $sku We used SKU to avoid conflict with Pro 1 and Pro 5 Gen models having same name." -ForegroundColor Yellow
+    Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro5thGen -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Pro 6") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
