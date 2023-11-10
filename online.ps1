@@ -113,7 +113,7 @@ if ($sku -eq "Surface_3_Nag") {
 } elseif ($model -eq "Surface Pro") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Pro 2") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
