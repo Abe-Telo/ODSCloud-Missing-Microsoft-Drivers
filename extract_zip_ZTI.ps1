@@ -10,7 +10,8 @@ if (-not $usbDrive) {
 # Load necessary assembly for zip operations and set paths
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
-$zipUrl = "https://github.com/AkosBakos/OSDCloud/archive/refs/heads/main.zip"
+#    "https://github.com/AkosBakos/OSDCloud/archive/refs/heads/main.zip"
+$zipUrl = "https://github.com/GregoryB74/OSD-Cloud/archive/refs/heads/main.zip"
 $basePath = "${usbDrive}:\OSDCloud\DriverPacks\"
 $zipPath = Join-Path $basePath "ZTI.zip"
 
