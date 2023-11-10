@@ -19,7 +19,7 @@ function Get-CurrentDateTime {
             # Adjusting for the timezone offset. The returned datetime is in UTC.
             # Comment out the next 3 lines if you want to use UTC instead. (No Consideration on Daylight Time)
             $utcDateTime = ($response.Content | ConvertFrom-Json).utc_datetime
-            $localDateTime = [DateTime]::Parse($utcDateTime).AddHours(5) # Adjusting for New York's standard time UTC-5. Adjust this value for daylight saving time if needed.
+            $localDateTime = [DateTime]::Parse($utcDateTime).AddHours(3) # Adjusting for New York's standard time UTC-5. Adjust this value for daylight saving time if needed.
             return $localDateTime
             
             #return ($response.Content | ConvertFrom-Json).utc_datetime
