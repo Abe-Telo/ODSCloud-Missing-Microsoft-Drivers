@@ -1,5 +1,5 @@
 # Use this script with a one-liner
-Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.ps1" -UseBasicParsing).Content
+#Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.ps1" -UseBasicParsing).Content
 
 # Get the system SKU and model
 $sku = (Get-ComputerInfo).CssystemSkuNumber
@@ -132,7 +132,7 @@ if ($sku -eq "Surface_3_Nag") {
     Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro4 -UseBasicParsing).Content
 
 } elseif ($sku -eq "Surface_Pro_1796") { 
-    Write-Host "sku Found: $sku We used SKU to avoid conflict with 2 models having same name." -ForegroundColor Yellow
+    Write-Host "SKU Found: $sku We used SKU to avoid conflict with 2 models having same name." -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
     #Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro5thGen -UseBasicParsing).Content
     exit
