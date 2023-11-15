@@ -63,7 +63,7 @@ if ($sku -eq "Surface_3_Nag") {
 
     Write-Host "Attempting New download method" -ForegroundColor Red
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-    Start-Process PowerShell -ArgumentList "-NoL -C Invoke-WebPSScript "https://github.com/AkosBakos/OSDCloud/blob/main/Install-EmbeddedProductKey.ps1" -Wait
+    PowerShell -ArgumentList "-NoL -C Invoke-WebPSScript "https://github.com/AkosBakos/OSDCloud/blob/main/Install-EmbeddedProductKey.ps1" -Wait
     #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceBook -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Book 2") { 
