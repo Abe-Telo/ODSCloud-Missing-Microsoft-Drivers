@@ -59,8 +59,12 @@ if ($sku -eq "Surface_3_Nag") {
 
 } elseif ($model -eq "Surface Book") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
-    Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfaceBook -UseBasicParsing).Content
+    Write-Host "This model already has Touch, Keyboard, Wifi Drivers working in WinPE" -ForegroundColor green
+
+    Write-Host "Attempting New download method" -ForegroundColor Red
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+    Start-Process PowerShell -ArgumentList "-NoL -C Invoke-WebPSScript "https://github.com/AkosBakos/OSDCloud/blob/main/Install-EmbeddedProductKey.ps1" -Wait
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceBook -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Book 2") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
