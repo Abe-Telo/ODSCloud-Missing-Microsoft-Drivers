@@ -98,7 +98,8 @@ if ($sku -eq "Surface_3_Nag") {
 
 } elseif ($model -eq "Surface Laptop 4") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
-    Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
+    Write-Host "Mouse and Keyboard Issue. Please report any Other issues you find when using WinPE" -ForegroundColor red
+    Write-Host "Unfortunately, I ran a test with pnputil and couldn't get it to work yet, More testing needed. " -ForegroundColor red
     Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop4 -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Laptop 5") { 
