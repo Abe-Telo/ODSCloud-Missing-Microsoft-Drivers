@@ -11,20 +11,20 @@ if (-not $usbDrive) {
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 $zipUrl = "https://github.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/archive/refs/heads/main.zip"
-$basePath = "${usbDrive}:\OSDCloud\DriverPacks\"
-$zipPath = Join-Path $basePath "ODSCloud-Missing-Microsoft-Drivers-main.zip"
+$Surface_3_Nag_Path = "${usbDrive}:\OSDCloud\DriverPacks\"
+$zipPath = Join-Path $Surface_3_Nag_Path "ODSCloud-Missing-Microsoft-Drivers-main.zip"
 
 # Ensure directory exists
-if (-not (Test-Path $basePath)) {
-    New-Item -Path $basePath -ItemType Directory
+if (-not (Test-Path $Surface_3_Nag_Path)) {
+    New-Item -Path $Surface_3_Nag_Path -ItemType Directory
 }
 
 # Download and extract ZIP
 Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath
-Expand-Archive -Path $zipPath -DestinationPath $basePath -Force
+Expand-Archive -Path $zipPath -DestinationPath $Surface_3_Nag_Path -Force
 
 # Construct driver paths
-$driversBase = Join-Path $basePath "ODSCloud-Missing-Microsoft-Drivers-main\Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0\SurfaceUpdate\Drivers"
+$driversBase = Join-Path $Surface_3_Nag_Path "ODSCloud-Missing-Microsoft-Drivers-main\Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902003_0\SurfaceUpdate\Drivers"
 $touchScreenDriverPath = Join-Path $driversBase "Display\SurfaceTouchScreenDriver\*"
 $spiDriverPath = Join-Path $driversBase "System\SPI\*"
 
