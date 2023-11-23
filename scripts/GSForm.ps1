@@ -1,3 +1,11 @@
+# With this script, you can log Serial numbers And other system info, Into a google sheet. This works with Google Forms.
+# To set this up correctly, Create a google form from drive.google.com
+# Create and name your 7 fields. EG: S/N, SKU, Model, Win Ver, CPU, Ram, HD.
+# Create a file "GSFormURL.txt" and past the URL.
+# Click on the three dots and lick, Get pre filed link. Right click and click inspect. 
+# Find <input name="entry.123456789"> Change fields for each entry.
+# Run the script .\GSForm.ps1 and test it. 
+
 # Define the log file path
 $logFilePath = "$PSScriptRoot\GSFormLog.txt"
 
@@ -30,7 +38,7 @@ Write-Log "HD: ${hd}GB" -color 'Green'
 
 # Define the URL of the Google Form submission endpoint
 Write-Log "Retrieving the Google Form URL..."
-$GSForm = Get-Content -Path "$PSScriptRoot\GSForm.txt"
+$GSForm = Get-Content -Path "$PSScriptRoot\GSFormURL.txt"
 
 # Log the URL
 Write-Log "Google Form URL: $GSForm"
