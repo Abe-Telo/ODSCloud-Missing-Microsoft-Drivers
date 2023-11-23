@@ -5,9 +5,22 @@
 # Click on the three dots and lick, Get pre filed link. Right click and click inspect. 
 # Find <input name="entry.123456789"> Change fields for each entry.
 # Run the script .\GSForm.ps1 and test it. 
+
+# Determine the USB partition of type IFS
+$usbDrive = Get-USBPartition | Where-Object { $_.Type -eq "IFS" } | Select-Object -ExpandProperty DriveLetter
+
+# If there's no IFS type drive found, terminate the script
+if (-not $usbDrive) {
+    Write-Error "No USB partition with IFS type found. Exiting."
+    return
+}
+
+# Base path adjusted to reflect the USB drive
+$basePath = "${usbDrive}:\OSDCloud\DriverPacks\ODSCloud-Missing-Microsoft-Drivers-main\scripts"
  
 # Define the log file path
-$logFilePath = "$PSScriptRoot\GSFormLog.txt"
+#$logFilePath = "$PSScriptRoot\GSFormLog.txt"
+$logFilePath = "$basePath\GSFormLog.txt"
 
 # Function to write a log both console and to a file
 function Write-Log {
@@ -17,7 +30,8 @@ function Write-Log {
 }
 
 # Read configuration from GSFormsConfig.txt
-$configFilePath = "$PSScriptRoot\GSFormsConfig.txt"
+#$configFilePath = "$PSScriptRoot\GSFormsConfig.txt"
+$configFilePath = "$basePath\GSFormsConfig.txt"
 $configData = @{}
 Get-Content $configFilePath | ForEach-Object {
     $parts = $_ -split '='
