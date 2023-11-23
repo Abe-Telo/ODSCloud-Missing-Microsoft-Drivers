@@ -42,22 +42,13 @@ if (Is-Online) {
         Write-Error "An error occurred while fetching or executing the online scripts."
     }
 } else {
-    # Run the local offline script if it exists
-    $localScriptPath = Join-Path $basePath "offline.ps1"
-    
+    # If offline, run the local script
+    $localScriptPath = Join-Path $basePath "offline.ps1" 
+
     if (Test-Path $localScriptPath) {
         Write-Output "Executing local script: $localScriptPath"
-        & $localScriptPath
+        & $localScriptPath 
     } else {
         Write-Error "The local script offline.ps1 does not exist at path $localScriptPath."
-    }
-    
-    # Execute local GSForm.ps1 if it exists
-    $localGSFormScript = Join-Path $basePath "scripts\GSForm.ps1"
-    if (Test-Path $localGSFormScript) {
-        Write-Output "Executing GSForm.ps1 script..."
-        & $localGSFormScript
-    } else {
-        Write-Error "GSForm.ps1 script not found at path $localGSFormScript."
     }
 }
