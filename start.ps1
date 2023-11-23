@@ -20,31 +20,44 @@ function Is-Online {
 }
 
 if (Is-Online) {
-    # If online, fetch and run the script from the URL
     try {
-        Write-Output "Fetching and executing extract_zip.ps1 from online source..."
+        Write-Output "Fetching and executing online scripts..."
+        # Fetch and execute online scripts
         Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/extract_zip.ps1" -UseBasicParsing).Content
         
         # Possibly replace this in the future
         Write-Output "Fetching and executing online.ps1 from online source..."
         Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.ps1" -UseBasicParsing).Content
-
+        
+        # Execute local GSForm.ps1 if it exists
         $localGSFormScript = Join-Path $basePath "scripts\GSForm.ps1"
-        & $localGSFormScript
+        if (Test-Path $localGSFormScript) {
+            Write-Output "Executing GSForm.ps1 script..."
+            & $localGSFormScript
+        } else {
+            Write-Error "GSForm.ps1 script not found at path $localGSFormScript."
+        }
 
     } catch {
-        Write-Error "Failed to fetch or execute the online script."
+        Write-Error "An error occurred while fetching or executing the online scripts."
     }
 } else {
-    # If offline, run the local script
+    # Run the local offline script if it exists
     $localScriptPath = Join-Path $basePath "offline.ps1"
-    $localGSFormScript = Join-Path $basePath "scripts\GSForm.ps1"
-
+    
     if (Test-Path $localScriptPath) {
         Write-Output "Executing local script: $localScriptPath"
         & $localScriptPath
-        & $localGSFormScript
     } else {
         Write-Error "The local script offline.ps1 does not exist at path $localScriptPath."
+    }
+    
+    # Execute local GSForm.ps1 if it exists
+    $localGSFormScript = Join-Path $basePath "scripts\GSForm.ps1"
+    if (Test-Path $localGSFormScript) {
+        Write-Output "Executing GSForm.ps1 script..."
+        & $localGSFormScript
+    } else {
+        Write-Error "GSForm.ps1 script not found at path $localGSFormScript."
     }
 }
