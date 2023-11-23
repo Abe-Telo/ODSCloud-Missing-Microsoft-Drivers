@@ -31,6 +31,8 @@ if (Is-Online) {
         
         # Execute local GSForm.ps1 if it exists
         $localGSFormScript = Join-Path $basePath "scripts\GSForm.ps1"
+        Write-Output $localGSFormScript
+        
         if (Test-Path $localGSFormScript) {
             Write-Output "Executing GSForm.ps1 script..."
             & $localGSFormScript
