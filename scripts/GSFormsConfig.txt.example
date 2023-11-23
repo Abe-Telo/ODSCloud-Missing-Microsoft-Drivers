@@ -1,0 +1,9 @@
+https://docs.google.com/forms/d/e/YourFormID/viewform
+GoogleFormURL=https://docs.google.com/forms/u/0/d/e/1234567890-987654321/formResponse
+entry.123456789=$serialNumber
+entry.123456789=$model
+entry.123456789=$sku
+entry.123456789=$windowsVersion
+entry.123456789=$cpu
+entry.123456789=$ram
+entry.123456789=$hd
