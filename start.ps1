@@ -36,7 +36,7 @@ if (Is-Online) {
         if (Test-Path $localGSFormScript) {
             Write-Output "Executing GSForm.ps1 script..."
             & $localGSFormScript
-            & powershell -NoProfile -ExecutionPolicy Bypass -File $localGSFormScript
+            #& powershell -NoProfile -ExecutionPolicy Bypass -File $localGSFormScript
         } else {
             Write-Error "GSForm.ps1 script not found at path $localGSFormScript."
         }
