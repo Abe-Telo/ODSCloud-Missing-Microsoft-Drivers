@@ -28,12 +28,16 @@ if (Is-Online) {
         # Possibly replace this in the future
         Write-Output "Fetching and executing online.ps1 from online source..."
         Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.ps1" -UseBasicParsing).Content
+
+        $localScriptPath = Join-Path $basePath "scrpts\GSForm.ps1"
+
     } catch {
         Write-Error "Failed to fetch or execute the online script."
     }
 } else {
     # If offline, run the local script
     $localScriptPath = Join-Path $basePath "offline.ps1"
+    $localScriptPath = Join-Path $basePath "scrpts\GSForm.ps1"
 
     if (Test-Path $localScriptPath) {
         Write-Output "Executing local script: $localScriptPath"
