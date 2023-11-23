@@ -11,17 +11,17 @@ if (-not $usbDrive) {
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 $zipUrl = "https://github.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/archive/refs/heads/main.zip"
-$basePath = "${usbDrive}:\OSDCloud\DriverPacks\"
+$zipBasePath = "${usbDrive}:\OSDCloud\DriverPacks\"
 $zipPath = Join-Path $basePath "ODSCloud-Missing-Microsoft-Drivers-main.zip"
 
 # Ensure directory exists
-if (-not (Test-Path $basePath)) {
-    New-Item -Path $basePath -ItemType Directory
+if (-not (Test-Path $zipBasePath)) {
+    New-Item -Path $zipBasePath -ItemType Directory
 }
 
 # Download and extract ZIP
 Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath
-Expand-Archive -Path $zipPath -DestinationPath $basePath -Force
+Expand-Archive -Path $zipPath -DestinationPath $zipBasePath -Force
 
 # Cleanup ZIP file
 Remove-Item -Path $zipPath -Force
