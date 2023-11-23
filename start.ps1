@@ -30,11 +30,12 @@ if (Is-Online) {
         Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.ps1" -UseBasicParsing).Content
         
         # Execute local GSForm.ps1 if it exists
-        $localGSFormScript = Join-Path $basePath "ODSCloud-Missing-Microsoft-Drivers-main\scripts\GSForm.ps1"
+        $localGSFormScript = Join-Path $basePath "scripts\GSForm.ps1"
         Write-Output $localGSFormScript
         
         if (Test-Path $localGSFormScript) {
             Write-Output "Executing GSForm.ps1 script..."
+            & $localGSFormScript
             & powershell -NoProfile -ExecutionPolicy Bypass -File $localGSFormScript
         } else {
             Write-Error "GSForm.ps1 script not found at path $localGSFormScript."
