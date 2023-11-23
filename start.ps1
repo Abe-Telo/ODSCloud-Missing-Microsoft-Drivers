@@ -29,7 +29,7 @@ if (Is-Online) {
         Write-Output "Fetching and executing online.ps1 from online source..."
         Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.ps1" -UseBasicParsing).Content
 
-        $localScriptPath = Join-Path $basePath "scrpts\GSForm.ps1"
+        $localScriptPath = Join-Path $basePath "scripts\GSForm.ps1"
 
     } catch {
         Write-Error "Failed to fetch or execute the online script."
