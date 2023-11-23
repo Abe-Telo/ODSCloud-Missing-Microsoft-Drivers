@@ -145,11 +145,11 @@ if ($sku -eq "Surface_3_Nag") {
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
 
     #Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AkosBakos/OSDCloud/main/OSDCloud_Start.ps1" -OutFile "OSDCloud_Start.ps1"
-    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/GregoryB74/OSD-Cloud/main/OSDCloud_Start.ps1" -OutFile "OSDCloud_Start.ps1"
+    #Invoke-WebRequest -Uri "https://raw.githubusercontent.com/GregoryB74/OSD-Cloud/main/OSDCloud_Start.ps1" -OutFile "OSDCloud_Start.ps1"
 
     #Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AkosBakos/OSDCloud/main/Install-EmbeddedProductKey.ps1" -OutFile "Install-EmbeddedProductKey.ps1"
-    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-    .\Install-EmbeddedProductKey.ps1
+    #Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+    #.\Install-EmbeddedProductKey.ps1
 
     #Invoke-Expression (Invoke-WebRequest -Uri "https://github.com/AkosBakos/OSDCloud/blob/main/Install-EmbeddedProductKey.ps1" -UseBasicParsing).Content
     #Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro5thGen -UseBasicParsing).Content
