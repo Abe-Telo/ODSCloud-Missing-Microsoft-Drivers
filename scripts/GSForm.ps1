@@ -40,6 +40,25 @@ Get-Content $configFilePath | ForEach-Object {
     $configData[$key] = $value
 }
 
+# Hard Drive Showing Size correctly 
+function Get-RoundedDiskSize {
+    param (
+        [uint64]$sizeInBytes
+    )
+
+    $sizeInGB = $sizeInBytes / 1GB
+    $powersOfTwo = @(32, 64, 128, 256, 512, 1024, 2048, 4096)
+
+    foreach ($power in $powersOfTwo) {
+        if ($sizeInGB -lt $power) {
+            return $power
+        }
+    }
+
+    return $sizeInGB
+}
+$diskSizeBytes = (Get-WmiObject -Class Win32_DiskDrive | Select-Object -First 1).Size
+
 # Fetch system information
 Write-Log "Fetching system information..."
 $serialNumber = (Get-WmiObject -Class Win32_BIOS).SerialNumber
@@ -48,7 +67,8 @@ $sku = (Get-ComputerInfo).CsSystemSkuNumber
 $windowsVersion = (Get-ComputerInfo).WindowsProductName + " " + (Get-ComputerInfo).WindowsVersion
 $cpu = (Get-WmiObject -Class Win32_Processor).Name
 $ram = [Math]::Round((Get-ComputerInfo).CsTotalPhysicalMemory / 1GB)
-$hd = [Math]::Round((Get-WmiObject -Class Win32_DiskDrive | Select-Object -First 1).Size / 1GB)
+#$hd = [Math]::Round((Get-WmiObject -Class Win32_DiskDrive | Select-Object -First 1).Size / 1GB)
+$hd = Get-RoundedDiskSize -sizeInBytes $diskSizeBytes
 
 # Log the collected information
 Write-Log "System Information:" -color 'Yellow'
