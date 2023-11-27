@@ -16,11 +16,11 @@ if (-not $usbDrive) {
 }
 
 # Base path adjusted to reflect the USB drive
-$basePath = "${usbDrive}:\OSDCloud\DriverPacks\ODSCloud-Missing-Microsoft-Drivers-main\scripts"
+$PathScripts = "${usbDrive}:\OSDCloud\DriverPacks\ODSCloud-Missing-Microsoft-Drivers-main\scripts"
  
 # Define the log file path
 #$logFilePath = "$PSScriptRoot\GSFormLog.txt"
-$logFilePath = "$basePath\GSFormLog.txt"
+$logFilePath = "$PathScripts\GSFormLog.txt"
 
 # Function to write a log both console and to a file
 function Write-Log {
@@ -31,7 +31,7 @@ function Write-Log {
 
 # Read configuration from GSFormsConfig.txt
 #$configFilePath = "$PSScriptRoot\GSFormsConfig.txt"
-$configFilePath = "$basePath\GSFormsConfig.txt"
+$configFilePath = "$PathScripts\GSFormsConfig.txt"
 $configData = @{}
 Get-Content $configFilePath | ForEach-Object {
     $parts = $_ -split '='
