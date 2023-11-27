@@ -66,56 +66,56 @@ if ($sku -eq "Surface_3_Nag") {
     #Invoke-WebPSScript "https://github.com/AkosBakos/OSDCloud/blob/main/Install-EmbeddedProductKey.ps1" -Wait
 
     $EmbeddedProductKey = "https://raw.githubusercontent.com/AkosBakos/OSDCloud/main/Install-EmbeddedProductKey.ps1"
-    Invoke-Expression (Invoke-WebRequest -Uri $EmbeddedProductKey -UseBasicParsing).Content
-
+    #Invoke-Expression (Invoke-WebRequest -Uri $EmbeddedProductKey -UseBasicParsing).Content
+    
     #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceBook -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Book 2") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfaceBook2 -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceBook2 -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Book 3") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfaceBook3 -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceBook3 -UseBasicParsing).Content
 
 
 } elseif ($model -eq "Surface Laptop") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Laptop 2") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop2 -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop2 -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Laptop 3") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model already has Touch, Keyboard, Wifi Drivers working in WinPE" -ForegroundColor green
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop3 -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop3 -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Laptop 4") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "Mouse and Keyboard Issue. Please report any Other issues you find when using WinPE" -ForegroundColor red
     Write-Host "Unfortunately, I ran a test with pnputil and couldn't get it to work yet, More testing needed. " -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop4 -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop4 -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Laptop 5") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop5 -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop5 -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Laptop Go") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptopGo -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptopGo -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Laptop Studio") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptopStudio -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptopStudio -UseBasicParsing).Content
 
 
 
@@ -128,17 +128,17 @@ if ($sku -eq "Surface_3_Nag") {
 } elseif ($model -eq "Surface Pro 2") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro2 -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro2 -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Pro 3") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
-    Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
+    Write-Host "This model already has Touch, Keyboard, Wifi Drivers working in WinPE" -ForegroundColor green
     #Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro3 -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Pro 4") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro4 -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro4 -UseBasicParsing).Content
 
 } elseif ($sku -eq "Surface_Pro_1796") { 
     Write-Host "SKU Found: $sku We used SKU to avoid conflict with 2 models having same name." -ForegroundColor Yellow
@@ -162,27 +162,27 @@ if ($sku -eq "Surface_3_Nag") {
 } elseif ($model -eq "Surface Pro 6") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro6 -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro6 -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Pro 7") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro7 -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro7 -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Pro 7+") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro7Plus -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro7Plus -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Pro 8") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro8 -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro8 -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Pro 9") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model is not yet investigated. Please report any issues in WinPE" -ForegroundColor red
-    Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro9 -UseBasicParsing).Content
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfacePro9 -UseBasicParsing).Content
 
     
 
