@@ -31,7 +31,7 @@ $touchScreenDriverPath = Join-Path $driversBase "SurfaceUpdate\*"
 write-host "Paths:"
 write-host "Drivers Base: $driversBase"
 write-host "Touch Screen: $touchScreenDriverPath"
-write-host "SPI: $spiDriverPath"
+#write-host "SPI: $spiDriverPath"
 
 # Install drivers
 pnputil.exe /add-driver $touchScreenDriverPath /subdirs /install 
