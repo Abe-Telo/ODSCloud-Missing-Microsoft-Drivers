@@ -31,4 +31,6 @@ However i noticed if you run this first, Then the touch will not work, You need 
 pnputil.exe /add-driver E:\OSDCloud\DriverPacks\Microsoft\lap4amd\SurfaceUpdate\surfacedigitizerhidspiextnpackage* /subdirs /install
 At this point Touch worked douring test. 
 
+I might as well uploud all and remove drivers 1 by 1 during test. 
+
 
