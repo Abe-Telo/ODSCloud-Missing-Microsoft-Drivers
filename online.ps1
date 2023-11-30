@@ -17,7 +17,8 @@ $SurfaceBook3 = "https://example.com/driver-path/"
 $SurfaceLaptop = "https://example.com/driver-path/"
 $SurfaceLaptop2 = "https://example.com/driver-path/"
 $SurfaceLaptop3 = "https://example.com/driver-path/"
-$SurfaceLaptop4 = "https://example.com/driver-path/"
+$SurfaceLaptop4Intel = "https://example.com/driver-path/"
+$SurfaceLaptop4Amd = "https://example.com/driver-path/"
 $SurfaceLaptop5 = "https://example.com/driver-path/"
 
 $SurfaceLaptopGo = "https://example.com/driver-path/"
@@ -95,6 +96,18 @@ if ($sku -eq "Surface_3_Nag") {
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "This model already has Touch, Keyboard, Wifi Drivers working in WinPE" -ForegroundColor green
     #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop3 -UseBasicParsing).Content
+
+
+    #"Surface_Laptop_4_1958:1959",
+    #"Surface_Laptop_4_1950:1951",
+    #"Surface_Laptop_4_1978:1979",
+
+} elseif ($sku -eq "Surface_Laptop_4_1952:1953") { 
+    Write-Host "Model Found: $model" -ForegroundColor Yellow
+    Write-Host "Mouse and Keyboard Issue. Please report any Other issues you find when using WinPE" -ForegroundColor red
+    Write-Host "A resolve is on its way " -ForegroundColor green
+    #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop4 -UseBasicParsing).Content
+
 
 } elseif ($model -eq "Surface Laptop 4") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
