@@ -18,7 +18,7 @@ $SurfaceLaptop = "https://example.com/driver-path/"
 $SurfaceLaptop2 = "https://example.com/driver-path/"
 $SurfaceLaptop3 = "https://example.com/driver-path/"
 $SurfaceLaptop4Intel = "https://example.com/driver-path/"
-$SurfaceLaptop4Amd = "https://example.com/driver-path/"
+$SurfaceLaptop4Amd = "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/SurfaceLaptop4Amd/Surface_Laptop_4_Amd.ps1"
 $SurfaceLaptop5 = "https://example.com/driver-path/"
 
 $SurfaceLaptopGo = "https://example.com/driver-path/"
@@ -106,14 +106,14 @@ if ($sku -eq "Surface_3_Nag") {
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     Write-Host "Mouse and Keyboard Issue. Please report any Other issues you find when using WinPE" -ForegroundColor red
     Write-Host "A resolve is on its way " -ForegroundColor green
-    #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop4 -UseBasicParsing).Content
+    Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop4 -UseBasicParsing).Content
 
 
-} elseif ($model -eq "Surface Laptop 4") { 
-    Write-Host "Model Found: $model" -ForegroundColor Yellow
-    Write-Host "Mouse and Keyboard Issue. Please report any Other issues you find when using WinPE" -ForegroundColor red
-    Write-Host "Unfortunately, I ran a test with pnputil and couldn't get it to work yet, More testing needed. " -ForegroundColor red
-    #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop4 -UseBasicParsing).Content
+#} elseif ($model -eq "Surface Laptop 4") { 
+#    Write-Host "Model Found: $model" -ForegroundColor Yellow
+#    Write-Host "Mouse and Keyboard Issue. Please report any Other issues you find when using WinPE" -ForegroundColor red
+#    Write-Host "Unfortunately, I ran a test with pnputil and couldn't get it to work yet, More testing needed. " -ForegroundColor red
+#    #Invoke-Expression (Invoke-WebRequest -Uri $SurfaceLaptop4 -UseBasicParsing).Content
 
 } elseif ($model -eq "Surface Laptop 5") { 
     Write-Host "Model Found: $model" -ForegroundColor Yellow
