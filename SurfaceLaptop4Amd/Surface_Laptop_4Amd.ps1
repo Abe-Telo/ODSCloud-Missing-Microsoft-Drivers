@@ -1,4 +1,5 @@
 # Fetch the USB drive with IFS type
+# Tested on Surface_Laptop_4_1952:1953
 $usbDrive = Get-USBPartition | Where-Object { $_.Type -eq "IFS" } | Select-Object -ExpandProperty DriveLetter
 
 # If no IFS type drive found, terminate the script
@@ -25,16 +26,20 @@ Expand-Archive -Path $zipPath -DestinationPath $Driver_Path -Force
 
 # Construct driver paths
 $driversBase = Join-Path $Driver_Path "ODSCloud-Missing-Microsoft-Drivers-main\SurfaceLaptop4Amd"
-$touchScreenDriverPath = Join-Path $driversBase "SurfaceUpdate\*" 
+$keybordAmdspiDriverPath = Join-Path $driversBase "SurfaceUpdate\amdspi\*" 
+$keybordAmduartDriverPath = Join-Path $driversBase "SurfaceUpdate\amduart\*" 
+#$touchScreenDriverPath = Join-Path $driversBase "SurfaceUpdate\touch\*" 
 
 # Display constructed paths
 write-host "Paths:"
-write-host "Drivers Base: $driversBase"
-write-host "Touch Screen: $touchScreenDriverPath"
-#write-host "SPI: $spiDriverPath"
+write-host "Drivers Base: $keybordAmdspiDriverPath"
+write-host "Touch Screen: $keybordAmduartDriverPath"
+#write-host "SPI: $touchScreenDriverPath"
 
 # Install drivers
-pnputil.exe /add-driver $touchScreenDriverPath /subdirs /install 
+pnputil.exe /add-driver $keybordAmdspiDriverPath /subdirs /install 
+pnputil.exe /add-driver $keybordAmduartDriverPath /subdirs /install 
+#pnputil.exe /add-driver $touchScreenDriverPath /subdirs /install 
 
 # Cleanup ZIP file
 Remove-Item -Path $zipPath -Force
