@@ -31,6 +31,7 @@ $Surface_3_NAG = "$basePath\Surface3_4GLTE-NorthAmericaUnlocked_Win10_18362_1902
 $Surface_3_WIFI = "$basePath\Surface_3_WIFI.PS1"
 $Surface_3_US2 = "$basePath\Surface_3_US2.PS1"
 $Surface_Pro4 = "$basePath\Surface_Pro4.PS1"
+$Surface_Laptop_4_1952_1953 = "$basePath\SurfaceLaptop4Amd\Surface_Laptop_4Amd.ps1"
 
 # Check SKU
 if ($sku -eq "Surface_3_Nag") {
@@ -52,6 +53,10 @@ if ($sku -eq "Surface_3_Nag") {
 } elseif ($model -eq "Surface Pro 4") {
     Write-Host "Model Found: $model" -ForegroundColor Yellow
     & $Surface_Pro4
+    
+} elseif ($sku -eq "Surface_Laptop_4_1952:1953") {
+    Write-Host "Model Found: $sku" -ForegroundColor Yellow
+    & $Surface_Laptop_4_1952_1953
 
 } else {
     Write-Host "Model not recognized. No updated drivers are available for this model. Exiting script." -ForegroundColor Red
