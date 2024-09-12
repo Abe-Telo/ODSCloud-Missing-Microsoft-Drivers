@@ -28,10 +28,16 @@ if (Is-Online) {
         # Possibly replace this in the future
         Write-Output "Fetching and executing online.ps1 from online source..."
         Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/online.ps1" -UseBasicParsing).Content
-        
+
+        # Run winpe_buttons.ps1 as a minimized PowerShell process without waiting for it to finish
+        Write-Output "Running winpe_buttons.ps1 as a minimized PowerShell process..."
+        Start-Process -FilePath "powershell.exe" -ArgumentList "-ExecutionPolicy Bypass -NoProfile -File https://raw.githubusercontent.com/Abe-Telo/ODSCloud-Missing-Microsoft-Drivers/main/scripts/winpe_buttons.ps1" -WindowStyle Minimized
+ 
         # Execute local GSForm.ps1 if it exists
         $localGSFormScript = Join-Path $basePath "scripts\GSForm.ps1"
         Write-Output $localGSFormScript
+
+
         
         if (Test-Path $localGSFormScript) {
             Write-Output "Executing GSForm.ps1 script..."\
