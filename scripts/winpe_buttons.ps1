@@ -84,7 +84,7 @@ $button2.Add_Click({
         $process | Stop-Process
     } else {
         # If not running, start it
-        Start-Process "C:\windows\system32\WirelessConnect.exe"
+        Start-Process "X:\windows\system32\WirelessConnect.exe"
     }
 })
 
